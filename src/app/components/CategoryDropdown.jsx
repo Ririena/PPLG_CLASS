@@ -22,7 +22,7 @@ const CategoryDropdown = ({ categories, onFilter }) => {
         <option value="">Pilih Category</option>
         {categories.map((category) => (
           <option key={category} value={category}>
-            {category}
+            {category === 'lakilaki' ? 'Laki-laki' : category === 'perempuan' ? 'Perempuan' : category}
           </option>
         ))}
       </select>

@@ -1,15 +1,15 @@
 // pages/UsersPage.js
-'use client'
+'use client';
 import React, { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic'; // Import the dynamic function
+import dynamic from 'next/dynamic';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Profiles from '../middleware/Profiles';
 
-const CardProfile = dynamic(() => import('../components/CardProfile')); // Dynamically import the CardProfile component
-const CategoryDropdown = dynamic(() => import('../components/CategoryDropdown')); // Dynamically import the CategoryDropdown component
+const CardProfile = dynamic(() => import('../components/CardProfile'));
+const CategoryDropdown = dynamic(() => import('../components/CategoryDropdown'));
 
-const UsersPage = () => {
+const CardDone = () => {
   const [usersData, setUsersData] = useState([]);
   const [filteredProfiles, setFilteredProfiles] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -31,7 +31,10 @@ const UsersPage = () => {
     if (category === 'All') {
       setFilteredProfiles(usersData);
     } else {
-      const filteredData = usersData.filter((user) => user.name === category);
+      // Filter berdasarkan kategori nama atau jenis kelamin
+      const filteredData = usersData.filter(
+        (user) => user.name === category || (user.gender === true && category === 'LakiLaki') || (user.gender === false && category === 'Perempuan')
+      );
       setFilteredProfiles(filteredData);
     }
   };
@@ -43,11 +46,11 @@ const UsersPage = () => {
           List Siswa X-RPL-2
         </h1>
         <CategoryDropdown
-          categories={['Siswa', ...categories]}
+          categories={['Siswa', 'LakiLaki', 'Perempuan', ...categories]}
           onFilter={handleFilter}
         />
       </div>
-      <div  data-aos="fade-right" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredProfiles.length > 0
           ? filteredProfiles.map((profile) => (
               <CardProfile key={profile.id} user={profile} />
@@ -60,4 +63,4 @@ const UsersPage = () => {
   );
 };
 
-export default UsersPage;
+export default CardDone;
