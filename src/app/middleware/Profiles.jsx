@@ -29,6 +29,7 @@ const Profiles = [
     name: "",
     email: "",
     avatar: "",
+    gender: true,
   },
   {
     id: 4,
