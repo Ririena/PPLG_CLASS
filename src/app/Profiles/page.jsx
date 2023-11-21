@@ -15,7 +15,6 @@ export default function Profiles() {
     <CardDone
     data-aos="fade-up"
     />
-    <h1>Tse</h1>
     </div>
     </>
   )

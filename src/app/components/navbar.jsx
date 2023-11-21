@@ -19,10 +19,11 @@ export default function Navbar() {
             <div className="text-lg font-bold text-purple-600 w-full">
              <Image
              src="/images/mengantul.png"
-             width={100}
-             height={100}
+             width={65}
+             height={65}
              alt="Logo"
              className=' hp:items-start sm:items-start hp:mr-32 mr-96'
+             priority='{false}'
              />
             </div>
             <div className="sm:hidden cursor-pointer relative">
