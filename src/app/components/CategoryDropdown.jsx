@@ -12,14 +12,15 @@ const CategoryDropdown = ({ categories, onFilter }) => {
   };
 
   return (
+    <>
     <div className="mb-4 max-w-md">
+    <h1 className='mb-1 ml-8' data-aos="fade-down">Pilih Kategori</h1>
       <select
         id="category"
         value={selectedCategory}
         onChange={handleChange}
-        className="border border-gray-400 border-b-gray-400 p-2 w-full"
-      >
-        <option value="">Pilih Category</option>
+        className="border border-gray-400 border-b-gray-400 p-2 w-full rounded-full hover:border-purple-600"
+        >
         {categories.map((category) => (
           <option key={category} value={category}>
             {category === 'lakilaki' ? 'Laki-laki' : category === 'perempuan' ? 'Perempuan' : category}
@@ -27,6 +28,7 @@ const CategoryDropdown = ({ categories, onFilter }) => {
         ))}
       </select>
     </div>
+        </>
   );
 };
 

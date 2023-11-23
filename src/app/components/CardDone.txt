@@ -1,13 +1,15 @@
-// components/CardProfile.js
+
+'use client';
 import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Profiles from '../middleware/Profiles';
 import { Skeleton } from '@nextui-org/react';
 
 const CardProfile = dynamic(() => import('../components/CardProfile'));
 const CategoryDropdown = dynamic(() => import('../components/CategoryDropdown'));
-const Profiles = dynamic(() => import('../middleware/Profiles'));
+const ProfilesObject = dynamic(() => import('../middleware/Profiles'));
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -15,19 +17,17 @@ const CardDone = () => {
   const [usersData, setUsersData] = useState([]);
   const [filteredProfiles, setFilteredProfiles] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('Semua Murid');
+  const [selectedCategory, setSelectedCategory] = useState('Murid');
 
   useEffect(() => {
     AOS.init();
   }, []);
 
   useEffect(() => {
-    import('../middleware/Profiles').then((module) => {
-      setUsersData(module.default);
-      const uniqueCategories = Array.from(new Set(module.default.map((profile) => profile.name)));
-      setCategories(uniqueCategories);
-      handleFilter(selectedCategory);
-    });
+    setUsersData(Profiles);
+    const uniqueCategories = Array.from(new Set(Profiles.map((profile) => profile.name)));
+    setCategories(uniqueCategories);
+    handleFilter(selectedCategory);
   }, [selectedCategory]);
 
   const handleFilter = async (category) => {
@@ -38,7 +38,7 @@ const CardDone = () => {
   
     if (category === 'All') {
       filteredData = usersData;
-    } else if (category === 'Semua Murid') {
+    } else if (category === 'Murid') {
       filteredData = usersData.slice().sort((a, b) => a.id - b.id);
     } else {
       filteredData = usersData.filter(
@@ -58,14 +58,14 @@ const CardDone = () => {
     }
   };
   
+
   return (
     <div className="container mx-auto my-8">
       <div className="flex justify-between items-center mb-6">
-        <h1 data-aos="fade-down" className="  font-semibold hp:mr-4 ml-4 uppercase">
-          List Murid <p>
-            X RPL2</p>
+        <h1 data-aos="fade-down" className="font-semibold text-lg ml-4">
+          List Murid X-RPL-2
         </h1>
-        <CategoryDropdown categories={['Semua Murid', 'LakiLaki', 'Perempuan']} onFilter={handleFilter} />
+        <CategoryDropdown categories={['Murid', 'LakiLaki', 'Perempuan', ...categories]} onFilter={handleFilter} />
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredProfiles.map((profile) => (

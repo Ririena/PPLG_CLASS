@@ -1,7 +1,8 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
-import Navbar from './components/navbar'
+import NewNavbar from './components/NewNavbar'
 const inter = Inter({ subsets: ['latin'] })
+
 
 export const metadata = {
   title: 'Website X-RPL-2',
@@ -10,10 +11,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html data-theme="cupcake" lang="en">
       <body className={inter.className}>
-        
-      <Navbar/>
+      <link rel="icon" href="/nexts.ico" sizes="any" />
+
+      <NewNavbar/>
       {children}
       </body>
     </html>

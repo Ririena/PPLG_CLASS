@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.16",
+    "daisyui": "^4.4.2",
     "eslint": "^8",
     "eslint-config-next": "14.0.1",
     "postcss": "^8.4.31",

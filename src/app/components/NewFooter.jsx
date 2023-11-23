@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { RiMenuLine } from 'react-icons/ri';
 import Image from 'next/image'
 
+
 export default function Navbar() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
@@ -22,7 +23,7 @@ export default function Navbar() {
              width={65}
              height={65}
              alt="Logo"
-             className=' hp:items-start sm:items-start hp:mr-32 mr-96'
+             className=' hp:items-start sm:items-start lg:w-auto xl:w-auto hp:w-16 hp:h-16'
              priority='{false}'
              />
             </div>

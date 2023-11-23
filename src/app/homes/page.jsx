@@ -7,7 +7,7 @@ import Image from 'next/image'
 import bgImg2 from "../assets/2.jpg"
 
 
-function Homes() {
+function Home() {
   const [pengguna, setPengguna] = useState('');
   const [showiPengguna, setShowiPengguna] = useState(false);
 
@@ -75,4 +75,4 @@ function Homes() {
   );
 }
 
-export default Homes;
+export default Home;
