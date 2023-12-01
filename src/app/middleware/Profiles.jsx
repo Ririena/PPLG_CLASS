@@ -26,6 +26,7 @@ const Profiles = [
     email: "Pengen Jadi Gamedev",
     avatar: "2.jpg",
     gender: true,
+    sosialig; "",
   },
   {
     id: 3,
