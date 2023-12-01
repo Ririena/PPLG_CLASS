@@ -2,6 +2,7 @@
 import React from "react";
 import {Accordion, AccordionItem} from "@nextui-org/react";
 import NewNavbar from "../components/NewNavbar";
+import { useState } from "react";
 
 export default function Nyoba() {
   const defaultContent =
